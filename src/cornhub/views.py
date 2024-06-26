@@ -1,7 +1,13 @@
+from io import BytesIO
+
+import flask
+import requests
+from flask import send_file, Response
+
 import cornhub
 from cornhub import pornhub
 
-import flask
+
 
 
 @cornhub.app.route("/", methods=["GET", "POST"])
@@ -37,6 +43,16 @@ def view_video():
 @cornhub.app.route("/search")
 def search():
     pass
+
+
+@cornhub.app.route("/proxy-file/<path:url>")
+def proxy_file(url):
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        return Response(response.content, mimetype=response.headers["Content-Type"])
+    except requests.exceptions.RequestException as e:
+        return str(e), 404
 
 
 @cornhub.app.errorhandler(404)
