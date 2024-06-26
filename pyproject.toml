@@ -24,7 +24,7 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: CPython",
   "Programming Language :: Python :: Implementation :: PyPy",
 ]
-dependencies = ["flask==3.0.3", "requests-html==0.10.0", "yt-dlp==2024.5.27"]
+dependencies = ["flask==3.0.3", "requests-html==0.10.0", "yt-dlp==2024.5.27", "lxml==4.9.4"]
 
 [project.urls]
 Source = "https://github.com/github/cornhub"
