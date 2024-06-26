@@ -4,7 +4,7 @@
 {% block main %}
     <div class="video-item singel-video-item">
         <video controls>
-            <source src="{{ url_for('proxy_file', url=video_item.formats[-2]['url']) }}" type="video/mp4">
+            <source src="{{ url_for('proxy', url=video_item.formats[-2]['url']) }}" type="video/mp4">
         </video>
         <p class="video-title">{{ video_item.title }}</p>
     </div>

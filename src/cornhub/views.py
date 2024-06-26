@@ -45,15 +45,13 @@ def search():
     pass
 
 
-@cornhub.app.route("/proxy-file/<path:url>")
-def proxy_file(url):
-    try:
-        response = requests.get(url, stream=True)
-        response.raise_for_status()
-        content_type = response.headers["Content-Type"]
-        return Response(response.iter_content(chunk_size=10*1024), content_type=content_type)
-    except requests.exceptions.RequestException as e:
-        return str(e), 404
+@cornhub.app.route("/proxy/<path:url>")
+def proxy(url):
+    request = requests.get(url, stream=True)
+    return Response(
+        stream_with_context(request.iter_content(chunk_size=10*1024)),
+        content_type=request.headers["Content-Type"]
+    )
 
 
 @cornhub.app.errorhandler(404)
