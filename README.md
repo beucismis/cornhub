@@ -5,7 +5,7 @@ Free front-end for corn lovers. No JavaScript and Ads.
 ## Installation
 
 ```
-pip install cornhub
+pip install git+https://github.com/beucismis/cornhub
 ```
 
 ## Deploying
