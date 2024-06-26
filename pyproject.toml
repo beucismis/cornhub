@@ -1,0 +1,44 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "cornhub"
+dynamic = ["version"]
+description = "Free front-end for corn lovers"
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+keywords = []
+authors = [
+  { name = "beucismis", email = "beucismis@tutamail.com" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = ["flask==3.0.3", "requests-html==0.10.0", "yt-dlp==2024.5.27"]
+
+[project.urls]
+Source = "https://github.com/github/cornhub"
+Issues = "https://github.com/github/cornhub/issues"
+Documentation = "https://github.com/github/cornhub#readme"
+
+[tool.hatch.version]
+path = "src/cornhub/__init__.py"
+
+[tool.hatch.envs.default]
+dependencies = ["pytest"]
+
+[tool.hatch.envs.default.scripts]
+test = "pytest tests/* -v"
+
+[[tool.hatch.envs.all.matrix]]
+python = ["3.8", "3.9", "3.10", "3.11", "3.12"]

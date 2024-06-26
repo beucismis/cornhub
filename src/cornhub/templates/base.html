@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <header>
+            <div class="links">
+                <a href="https://github.com/beucismis/cornhub" target="_blank">Source Code</a>
+            </div>
+            <h1 class="title"><a href="/">Corn<span class="hub">hub</span></a></h1>
+            <p class="description">Free front-end for corn lovers</p>
+            {% block nav %}
+                <nav>
+                    <a href="{{ url_for('recommended') }}">Recommended</a>
+                    <a href="{{ url_for('video', o='ht') }}">Hottest</a>
+                    <a href="{{ url_for('video', o='mv') }}">Most Viewed</a>
+                    <a href="{{ url_for('video', o='tr') }}">Top Rated</a>
+                </nav>
+            {% endblock %}
+        </header>
+        <main>
+            {% block main %}{% endblock %}
+        </main>
+    </body>
+</html>

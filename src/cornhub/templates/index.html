@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Cornhub{% endblock %}
+{% block main %}
+    <div class="video-container">
+        {% for item in video_items %}
+            <div class="video-item">
+                <a href="{{ url_for('view_video', viewkey=item.viewkey) }}" target="_blank">
+                    <img class="video-thumbnail" src="{{ item.thumbnail_url }}"/>
+                    <p class="video-title">{{ item.title }}</p>
+                </a>
+                <p class="video-uploader">{{ item.uploader.name }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
