@@ -4,7 +4,7 @@
     <div class="video-container">
         {% for item in video_items %}
             <div class="video-item">
-                <a href="{{ url_for('view_video', viewkey=item.viewkey) }}" target="_blank">
+                <a href="{{ url_for('view_video', viewkey=item.viewkey) }}">
                     <img class="video-thumbnail" src="{{ url_for('proxy', url=item.thumbnail_url) }}"/>
                     <p class="video-title">{{ item.title }}</p>
                 </a>

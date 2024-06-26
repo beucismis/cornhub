@@ -1,8 +1,5 @@
-from io import BytesIO
-
 import flask
 import requests
-from flask import send_file, Response
 
 import cornhub
 from cornhub import pornhub
@@ -48,8 +45,8 @@ def search():
 @cornhub.app.route("/proxy/<path:url>")
 def proxy(url):
     request = requests.get(url, stream=True)
-    return Response(
-        stream_with_context(request.iter_content(chunk_size=10*1024)),
+    return flask.Response(
+        flask.stream_with_context(request.iter_content(chunk_size=10*1024)),
         content_type=request.headers["Content-Type"]
     )
 
