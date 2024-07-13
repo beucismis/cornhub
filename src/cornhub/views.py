@@ -42,15 +42,6 @@ def search():
     pass
 
 
-@cornhub.app.route("/proxy/<path:url>")
-def proxy(url):
-    request = requests.get(url, stream=True)
-    return flask.Response(
-        flask.stream_with_context(request.iter_content(chunk_size=10*1024)),
-        content_type=request.headers["Content-Type"]
-    )
-
-
 @cornhub.app.errorhandler(404)
 def page_not_found(e):
     return flask.render_template("404.html"), 404
